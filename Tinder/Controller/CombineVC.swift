@@ -49,10 +49,14 @@ extension CombineVC {
             let point = gesture.translation(in: view)
             card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
             
+            //fazendo rotação do card
+            let rotationAngle = point.x / view.bounds.width * 0.4
+            card.transform = CGAffineTransform(rotationAngle: rotationAngle)
             //fazendo o card voltar para a posição inicial
             if gesture.state == .ended{
                 UIView.animate(withDuration: 0.2) {
-                      card.center = self.view.center
+                    card.center = self.view.center
+                    card.transform = .identity
                 }
             }
         }
