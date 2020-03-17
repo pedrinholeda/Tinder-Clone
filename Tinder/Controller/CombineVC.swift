@@ -10,10 +10,17 @@ import UIKit
 
 class CombineVC: UIViewController{
     
+    var usuarios : [Usuario] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.systemGroupedBackground
+        self.buscaUsuarios()
+    }
+    
+    func buscaUsuarios(){
+        self.usuarios = UsuarioService.shared.buscaUsuarios()
         self.adicionarCard()
     }
 }
@@ -21,21 +28,24 @@ class CombineVC: UIViewController{
 extension CombineVC {
     func adicionarCard(){
 
-        for item in 1...3{
-            let redView = CombineCardView()
-            redView.frame = CGRect(x: 0, y: 0, width: view.bounds.width - 32, height: view.bounds.height * 0.7)
+        for usuario in usuarios{
+            
+            let card = CombineCardView()
+            card.frame = CGRect(x: 0, y: 0, width: view.bounds.width - 32, height: view.bounds.height * 0.7)
             
             //centralizando view
-            redView.center = view.center
+            card.center = view.center
+            card.usuario = usuario
+            card.tag = usuario.id
             
             //interação (arrastar card)
             let gesture = UIPanGestureRecognizer()
             gesture.addTarget(self, action: #selector(handlerCard))
             
-            redView.addGestureRecognizer(gesture)
+            card.addGestureRecognizer(gesture)
             
             //ADICIONANDO VIEW DENTRO DA COMBINE VIEWCONTROLLER
-            view.addSubview(redView)
+            view.insertSubview(card, at: 0)
         }
     }
 }

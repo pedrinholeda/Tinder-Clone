@@ -17,6 +17,8 @@
 		E489150624212109005093C8 /* CombineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489150524212109005093C8 /* CombineCardView.swift */; };
 		E489150924212372005093C8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489150824212372005093C8 /* UIView.swift */; };
 		E489150B24212DCD005093C8 /* UiLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489150A24212DCD005093C8 /* UiLabel.swift */; };
+		E489150E2421336A005093C8 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489150D2421336A005093C8 /* Usuario.swift */; };
+		E4891511242134C0005093C8 /* UsuarioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4891510242134C0005093C8 /* UsuarioService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		E489150524212109005093C8 /* CombineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineCardView.swift; sourceTree = "<group>"; };
 		E489150824212372005093C8 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E489150A24212DCD005093C8 /* UiLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiLabel.swift; sourceTree = "<group>"; };
+		E489150D2421336A005093C8 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		E4891510242134C0005093C8 /* UsuarioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 		E48914EC24211751005093C8 /* Tinder */ = {
 			isa = PBXGroup;
 			children = (
+				E489150F2421349A005093C8 /* Services */,
+				E489150C24213351005093C8 /* Model */,
 				E489150724212330005093C8 /* Lib */,
 				E4891504242120DD005093C8 /* View */,
 				E48915012421179E005093C8 /* Controller */,
@@ -101,6 +107,22 @@
 				E489150A24212DCD005093C8 /* UiLabel.swift */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		E489150C24213351005093C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E489150D2421336A005093C8 /* Usuario.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E489150F2421349A005093C8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E4891510242134C0005093C8 /* UsuarioService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +196,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4891511242134C0005093C8 /* UsuarioService.swift in Sources */,
+				E489150E2421336A005093C8 /* Usuario.swift in Sources */,
 				E4891503242117B4005093C8 /* CombineVC.swift in Sources */,
 				E489150B24212DCD005093C8 /* UiLabel.swift in Sources */,
 				E48914F224211751005093C8 /* ViewController.swift in Sources */,
