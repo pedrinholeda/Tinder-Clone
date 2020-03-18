@@ -10,6 +10,10 @@ import UIKit
 
 class CombineVC: UIViewController{
     
+    var perfilButton: UIButton = .iconMenu(named: "icone-perfil")
+    var logoButton : UIButton = .iconMenu(named: "icone-logo")
+    var chatButton : UIButton = .iconMenu(named: "icone-chat")
+    
     var deslikeButton: UIButton = .iconFooter(named: "icone-deslike")
     var superlikeButton: UIButton = .iconFooter(named: "icone-superlike")
     var likeButton: UIButton = .iconFooter(named: "icone-like")
@@ -21,6 +25,7 @@ class CombineVC: UIViewController{
         
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.systemGroupedBackground
+        self.adicionarHeader()
         self.adicionarFooter()
         self.buscaUsuarios()
     }
@@ -32,6 +37,25 @@ class CombineVC: UIViewController{
 }
 
 extension CombineVC{
+    func adicionarHeader(){
+        //em caso de ser iphone x etc (contem SafeArea)
+        let window = UIApplication.shared.windows.first {$0.isKeyWindow}
+        let top: CGFloat = window?.safeAreaInsets.top ?? 44
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        let stackView = UIStackView(arrangedSubviews: [perfilButton, logoButton, chatButton])
+        stackView.distribution = .equalCentering
+        
+        view.addSubview(stackView)
+        stackView.preencher(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: nil,
+            padding: .init(top: top, left: 16, bottom: 0, right: 16)
+            )
+    }
+    
     func adicionarFooter(){
         let stackView = UIStackView(arrangedSubviews: [UIView(),deslikeButton,superlikeButton, likeButton, UIView()])
         stackView.distribution = .equalCentering
