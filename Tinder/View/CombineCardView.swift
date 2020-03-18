@@ -22,20 +22,15 @@ class CombineCardView: UIView{
     }
     
     //adicionando imagem de fundo
-    let fotoImagemView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "pessoa-1")
-        //ajustando a imagem para nao ficar esticada
-        imageView.contentMode = .scaleAspectFill
-        //cortando a imagem caso ela passe do card
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    let fotoImagemView: UIImageView = .fotoImageView()
     
     let nomeLabel: UILabel = .textBoldLabel(32, textColor: .white)
     let idadeLabel: UILabel = .textLabel(28, textColor: .white)
     let fraseLabel : UILabel = .textLabel(18, textColor: .white, numberOfLines: 2)
     
+    //adicionando like e deslike
+    let deslikeImageView: UIImageView = .iconCard(named: "card-deslike")
+    let likeImageView: UIImageView = .iconCard(named: "card-like")
     
     override init (frame: CGRect){
         super.init(frame:frame)
@@ -47,17 +42,33 @@ class CombineCardView: UIView{
         //fazendo o recorte
         clipsToBounds = true
         
-        nomeLabel.text = "Ana Laura"
-        idadeLabel.text = "20"
-        fraseLabel.text = "chama a novinha no zap"
-        
         nomeLabel.adicionaShadow()
         idadeLabel.adicionaShadow()
         fraseLabel.adicionaShadow()
         
         addSubview(fotoImagemView)
-        
         fotoImagemView.preencherSuperview()
+        
+        addSubview(deslikeImageView)
+        deslikeImageView.preencher(
+            top: topAnchor,
+            leading: nil,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 20, left: 0, bottom: 0, right: 20)
+        )
+        
+        addSubview(likeImageView)
+            likeImageView.preencher(
+            top: topAnchor,
+            leading: leadingAnchor,
+            trailing: nil,
+            bottom: nil,
+            padding: .init(top: 20, left: 20, bottom: 0, right: 0)
+        )
+        
+        
+
         
         let nomeIdadeStackView = UIStackView(arrangedSubviews: [nomeLabel, idadeLabel, UIView()])
         nomeIdadeStackView.spacing = 12
