@@ -53,7 +53,7 @@ extension CombineVC {
 extension CombineVC {
 
     @objc func handlerCard(_ gesture:UIPanGestureRecognizer){
-        if let card = gesture.view{
+        if let card = gesture.view as? CombineCardView {
             //pegando posição pra onde o usuario está arrastando
             let point = gesture.translation(in: view)
             card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
@@ -61,11 +61,26 @@ extension CombineVC {
             //fazendo rotação do card
             let rotationAngle = point.x / view.bounds.width * 0.4
             card.transform = CGAffineTransform(rotationAngle: rotationAngle)
+            
+            //fazendo amimação do like e deslike
+                //significa que ele esta indo pra direita
+            if point.x > 0{
+                card.likeImageView.alpha = rotationAngle * 5
+                card.deslikeImageView.alpha = 0
+            }else{
+                card.likeImageView.alpha = 0
+                card.deslikeImageView.alpha =  rotationAngle * 5 * -1
+            }
+            
             //fazendo o card voltar para a posição inicial
             if gesture.state == .ended{
                 UIView.animate(withDuration: 0.2) {
                     card.center = self.view.center
                     card.transform = .identity
+                    
+                    //quando finalizar o toque sumir imagem de like e deslike
+                    card.likeImageView.alpha = 0
+                    card.deslikeImageView.alpha = 0
                 }
             }
         }
