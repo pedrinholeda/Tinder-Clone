@@ -10,18 +10,40 @@ import UIKit
 
 class CombineVC: UIViewController{
     
+    var deslikeButton: UIButton = .iconFooter(named: "icone-deslike")
+    var superlikeButton: UIButton = .iconFooter(named: "icone-superlike")
+    var likeButton: UIButton = .iconFooter(named: "icone-like")
+    
     var usuarios : [Usuario] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.systemGroupedBackground
+        self.adicionarFooter()
         self.buscaUsuarios()
     }
     
     func buscaUsuarios(){
         self.usuarios = UsuarioService.shared.buscaUsuarios()
         self.adicionarCard()
+    }
+}
+
+extension CombineVC{
+    func adicionarFooter(){
+        let stackView = UIStackView(arrangedSubviews: [UIView(),deslikeButton,superlikeButton, likeButton, UIView()])
+        stackView.distribution = .equalCentering
+        
+        view.addSubview(stackView)
+        stackView.preencher(
+            top: nil,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor,
+            padding: .init(top: 0, left: 16, bottom: 34, right: 16)
+            )
     }
 }
 
@@ -62,7 +84,7 @@ extension CombineVC {
             let rotationAngle = point.x / view.bounds.width * 0.4
             card.transform = CGAffineTransform(rotationAngle: rotationAngle)
             
-            //fazendo amimação do like e deslike
+            //fazendo animação do like e deslike
                 //significa que ele esta indo pra direita
             if point.x > 0{
                 card.likeImageView.alpha = rotationAngle * 5

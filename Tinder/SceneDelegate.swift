@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .white
-        window?.rootViewController = CombineVC() //setando pagina inicial
+        window?.rootViewController = UINavigationController(rootViewController: CombineVC()) //setando pagina inicial com navigate
         window?.makeKeyAndVisible() // chama metodo para iniciar aplicação
     }
 
