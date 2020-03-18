@@ -24,7 +24,7 @@ extension UIImageView{
     static func iconCard (named: String) -> UIImageView{
         let imageView = UIImageView()
         imageView.image = UIImage(named: named)
-        imageView.size(size: .init(width: 70, height: 70))
+        imageView.size(size: .init(width: 130, height: 130))
         //porcentagem em que a imagem aparece
         imageView.alpha = 0.0
         return imageView
