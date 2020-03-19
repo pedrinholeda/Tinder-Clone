@@ -173,6 +173,7 @@ extension CombineVC {
         if let usuario = self.usuarios.first{
             for view in self.view.subviews{
                 if view.tag == usuario.id {
+                    
                     if let card = view as? CombineCardView{
                         
                         let center : CGPoint
