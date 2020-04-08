@@ -9,9 +9,13 @@
 import UIKit
 
 class MatchVC : UIViewController{
+    
+    let fotoImageView: UIImageView = .fotoImageView(named: "pessoa-1")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.blue
+        view.addSubview(fotoImageView)
+        fotoImageView.preencherSuperview()
     }
 }
