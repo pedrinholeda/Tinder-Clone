@@ -10,6 +10,7 @@ import UIKit
 
 enum Acao{
     case deslike
+    case superlike
     case like
 }
 
@@ -30,14 +31,28 @@ class CombineVC: UIViewController{
         
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.systemGroupedBackground
+        
+        let loading = Loading(frame: view.frame)
+        
+        view.insertSubview(loading, at: 0)
+        
         self.adicionarHeader()
         self.adicionarFooter()
         self.buscaUsuarios()
     }
     
     func buscaUsuarios(){
-        self.usuarios = UsuarioService.shared.buscaUsuarios()
-        self.adicionarCard()
+//        self.usuarios = UsuarioService.shared.buscaUsuarios()
+//        self.adicionarCard()
+        
+        UsuarioService.shared.buscaUsuarios { (usuarios, err) in
+            if let usuarios = usuarios {
+                DispatchQueue.main.async {
+                    self.usuarios = usuarios
+                    self.adicionarCard()
+                }
+            }
+        }
     }
 }
 
@@ -72,7 +87,11 @@ extension CombineVC{
             trailing: view.trailingAnchor,
             bottom: view.bottomAnchor,
             padding: .init(top: 0, left: 16, bottom: 34, right: 16)
-            )
+        )
+        
+        deslikeButton.addTarget(self, action: #selector(deslikeClique), for: .touchUpInside)
+        superlikeButton.addTarget(self, action: #selector(superLikeClique), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(likeClique), for: .touchUpInside)
     }
 }
 
@@ -96,7 +115,7 @@ extension CombineVC {
             card.addGestureRecognizer(gesture)
             
             //ADICIONANDO VIEW DENTRO DA COMBINE VIEWCONTROLLER
-            view.insertSubview(card, at: 0)
+            view.insertSubview(card, at: 1)
         }
     }
     
@@ -107,10 +126,30 @@ extension CombineVC {
             return usuario.id != card.tag
         })
     }
+    
+    func verificarMach(usuario:Usuario){
+        if usuario.match{
+            print("woooow")
+            
+            let matchVC = MatchVC()
+            //iniciando logica de match
+            matchVC.modalPresentationStyle = .fullScreen
+            self.present(matchVC, animated: true, completion: nil)
+        }
+    }
 }
 
 extension CombineVC {
-
+    @objc func deslikeClique (){
+        animaCard(rotationAngle: -0.4, acao: .deslike)
+    }
+    @objc func likeClique (){
+        animaCard(rotationAngle: 0.4, acao: .like)
+    }
+    @objc func superLikeClique(){
+        animaCard(rotationAngle: 0, acao: .superlike)
+    }
+    
     @objc func handlerCard(_ gesture:UIPanGestureRecognizer){
         if let card = gesture.view as? CombineCardView {
             //pegando posição pra onde o usuario está arrastando
@@ -159,21 +198,37 @@ extension CombineVC {
         if let usuario = self.usuarios.first{
             for view in self.view.subviews{
                 if view.tag == usuario.id {
+                    
                     if let card = view as? CombineCardView{
                         
                         let center : CGPoint
+                        var like: Bool
                         
                         switch acao{
                         case .deslike:
                             center = CGPoint(x: card.center.x - self.view.bounds.width, y: card.center.y + 50)
+                            like = false
                         case .like:
                             center = CGPoint(x: card.center.x + self.view.bounds.width, y: card.center.y + 50)
+                            like = true
+                        case .superlike:
+                            center = CGPoint(x: card.center.x, y: card.center.y - self.view.bounds.height)
+                            like = true
                         }
                         
                         UIView.animate(withDuration: 0.2, animations: {
                             card.center = center
                             card.transform = CGAffineTransform(rotationAngle: rotationAngle)
+                            
+                            card.deslikeImageView.alpha = like == false ? 1 : 0
+                            card.deslikeImageView.alpha = like == true ? 1 : 0
+                            
                         }) {(_) in
+                            
+                            if like{
+                                self.verificarMach(usuario: usuario)
+                            }
+                            
                             self.removerCard(card: card)
                         }
                     }

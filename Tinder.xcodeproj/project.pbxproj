@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E40B965C242255AD00A13A74 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B965B242255AD00A13A74 /* UIButton.swift */; };
+		E44A09B5243D0A2E00A43E29 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A09B4243D0A2E00A43E29 /* MatchVC.swift */; };
 		E48914EE24211751005093C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48914ED24211751005093C8 /* AppDelegate.swift */; };
 		E48914F024211751005093C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48914EF24211751005093C8 /* SceneDelegate.swift */; };
 		E48914F224211751005093C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48914F124211751005093C8 /* ViewController.swift */; };
@@ -21,10 +22,12 @@
 		E489150E2421336A005093C8 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489150D2421336A005093C8 /* Usuario.swift */; };
 		E4891511242134C0005093C8 /* UsuarioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4891510242134C0005093C8 /* UsuarioService.swift */; };
 		E489151324213B14005093C8 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489151224213B14005093C8 /* UIImageView.swift */; };
+		E4ABF2B32423F9C9009047F8 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABF2B22423F9C9009047F8 /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E40B965B242255AD00A13A74 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		E44A09B4243D0A2E00A43E29 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		E48914EA24211751005093C8 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48914ED24211751005093C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E48914EF24211751005093C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		E489150D2421336A005093C8 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		E4891510242134C0005093C8 /* UsuarioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioService.swift; sourceTree = "<group>"; };
 		E489151224213B14005093C8 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		E4ABF2B22423F9C9009047F8 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E4891502242117B4005093C8 /* CombineVC.swift */,
+				E44A09B4243D0A2E00A43E29 /* MatchVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				E489150524212109005093C8 /* CombineCardView.swift */,
+				E4ABF2B22423F9C9009047F8 /* Loading.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 				E48914EE24211751005093C8 /* AppDelegate.swift in Sources */,
 				E40B965C242255AD00A13A74 /* UIButton.swift in Sources */,
 				E489150924212372005093C8 /* UIView.swift in Sources */,
+				E44A09B5243D0A2E00A43E29 /* MatchVC.swift in Sources */,
+				E4ABF2B32423F9C9009047F8 /* Loading.swift in Sources */,
 				E48914F024211751005093C8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
