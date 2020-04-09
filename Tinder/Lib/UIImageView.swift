@@ -16,7 +16,7 @@ extension UIImageView{
         if let named = named {
             imageView.image = UIImage(named: named)
         }
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }
