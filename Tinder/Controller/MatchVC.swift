@@ -10,6 +10,16 @@ import UIKit
 
 class MatchVC : UIViewController{
     
+    //implementando dados do usuario
+    var usuario : Usuario? {
+        didSet{
+            if let usuario = usuario {
+                fotoImageView.image = UIImage(named: usuario.foto)
+                mensagemLabel.text = "\(usuario.nome) curtiu você também!"
+            }
+        }
+    }
+    
     let fotoImageView: UIImageView = .fotoImageView(named: "pessoa-1")
     let likeImageView: UIImageView = .fotoImageView(named: "icone-like")
     
@@ -67,8 +77,16 @@ class MatchVC : UIViewController{
         view.addSubview(fotoImageView)
         fotoImageView.preencherSuperview()
         
-        mensagemLabel.text =  "Ela te curtiu Também"
+        //criando gradiente
+        let gradient = CAGradientLayer()
+        gradient.frame = view.frame
+        //clear pra limpar entre as duas cores
+        gradient.colors = [UIColor.clear.cgColor,UIColor.clear.cgColor, UIColor.black.cgColor]
+        fotoImageView.layer.addSublayer(gradient)
+        
         mensagemLabel.textAlignment = .center
+        
+        voltarButton.addTarget(self, action: #selector(voltarClique), for: .touchUpInside)
         
         likeImageView.translatesAutoresizingMaskIntoConstraints = false
         likeImageView.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -85,7 +103,6 @@ class MatchVC : UIViewController{
         
         let stackView = UIStackView(arrangedSubviews: [likeImageView, mensagemLabel, mensagemTxt, voltarButton])
         
-        //alterando eixo
         stackView.axis = .vertical
         stackView.spacing = 16
         
@@ -96,5 +113,9 @@ class MatchVC : UIViewController{
             trailing: view.trailingAnchor,
             bottom: view.bottomAnchor,
             padding: .init(top: 0, left: 32, bottom: 46, right: 32))
+    }
+    //função de fechar modal
+    @objc func voltarClique() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
