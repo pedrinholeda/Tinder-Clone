@@ -74,6 +74,12 @@ class MatchVC : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //criando um observe para quando o teclado abrir criar uma ação
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        //criando uma observe para o a view voltar ao tamanho normal depois que o teclado sumir
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         view.addSubview(fotoImageView)
         fotoImageView.preencherSuperview()
         
@@ -114,8 +120,48 @@ class MatchVC : UIViewController{
             bottom: view.bottomAnchor,
             padding: .init(top: 0, left: 32, bottom: 46, right: 32))
     }
+    //fazer o teclado sumir com o toque na tela
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //forca o teclado a sumir
+        view.endEditing(true)
+    }
+    
     //função de fechar modal
     @objc func voltarClique() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func keyboardShow(notification: NSNotification) {
+        //pegar o tamanho do teclado
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if let duracao = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+               
+            //criando animaçao
+                UIView.animate(withDuration: duracao){
+                 
+                    self.view.frame = CGRect(
+                        x: self.view.frame.origin.x,
+                        y: self.view.frame.origin.y,
+                        width: self.view.frame.width,
+                        //diminuindo o tamanho do teclado
+                        height: self.view.frame.height - keyboardSize.height
+                    )
+                    //funçao para redefinir layout
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardHide(notification: NSNotification){
+            if let duracao = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+                UIView.animate(withDuration: duracao - 1){
+                    //voltando a tela para o tamanho normal
+                    self.view.frame = UIScreen.main.bounds
+                    //funçao para redefinir layout
+                    self.view.layoutIfNeeded()
+                    
+            }
+        }
     }
 }
