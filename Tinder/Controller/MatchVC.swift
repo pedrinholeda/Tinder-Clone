@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MatchVC : UIViewController{
+class MatchVC : UIViewController, UITextFieldDelegate{
     
     //implementando dados do usuario
     var usuario : Usuario? {
@@ -90,6 +90,8 @@ class MatchVC : UIViewController{
         gradient.colors = [UIColor.clear.cgColor,UIColor.clear.cgColor, UIColor.black.cgColor]
         fotoImageView.layer.addSublayer(gradient)
         
+        mensagemTxt.delegate = self
+        
         mensagemLabel.textAlignment = .center
         
         voltarButton.addTarget(self, action: #selector(voltarClique), for: .touchUpInside)
@@ -106,6 +108,8 @@ class MatchVC : UIViewController{
             trailing: mensagemTxt.trailingAnchor,
             bottom: mensagemTxt.bottomAnchor,
             padding: .init(top: 0, left: 0, bottom: 0, right: 16))
+        //adicionando funçao ao botão
+        mensagemEnviarButton.addTarget(self, action: #selector(enviarMensagem), for: .touchUpInside)
         
         let stackView = UIStackView(arrangedSubviews: [likeImageView, mensagemLabel, mensagemTxt, voltarButton])
         
@@ -126,6 +130,12 @@ class MatchVC : UIViewController{
         view.endEditing(true)
     }
     
+    //funçao para pegar o que o usuario esta digitando
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.enviarMensagem()
+        return true
+    }
+    
     //função de fechar modal
     @objc func voltarClique() {
         self.dismiss(animated: true, completion: nil)
@@ -138,13 +148,14 @@ class MatchVC : UIViewController{
                
             //criando animaçao
                 UIView.animate(withDuration: duracao){
-                 
+                    // frame atual: self.view.frame.origin.x,
+                    // frame principal: UIScreen.main.bounds.origin.x
                     self.view.frame = CGRect(
-                        x: self.view.frame.origin.x,
-                        y: self.view.frame.origin.y,
-                        width: self.view.frame.width,
+                        x:UIScreen.main.bounds.origin.x,
+                        y:UIScreen.main.bounds.origin.y,
+                        width: UIScreen.main.bounds.width,
                         //diminuindo o tamanho do teclado
-                        height: self.view.frame.height - keyboardSize.height
+                        height: UIScreen.main.bounds.height - keyboardSize.height
                     )
                     //funçao para redefinir layout
                     self.view.layoutIfNeeded()
@@ -162,6 +173,12 @@ class MatchVC : UIViewController{
                     self.view.layoutIfNeeded()
                     
             }
+        }
+    }
+    
+    @objc func enviarMensagem(){
+        if let mensagem = self.mensagemTxt.text{
+        print(mensagem)
         }
     }
 }
