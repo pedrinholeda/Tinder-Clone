@@ -108,6 +108,11 @@ extension CombineVC {
             card.usuario = usuario
             card.tag = usuario.id
             
+            //card de informaçoes
+            card.callback = {(data) in
+                print("callback")
+            }
+            
             //interação (arrastar card)
             let gesture = UIPanGestureRecognizer()
             gesture.addTarget(self, action: #selector(handlerCard))
