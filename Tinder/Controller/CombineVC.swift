@@ -110,7 +110,7 @@ extension CombineVC {
             
             //card de informaçoes
             card.callback = {(data) in
-                print("callback")
+                self.vizualizarUsuario(usuario: usuario)
             }
             
             //interação (arrastar card)
@@ -143,6 +143,15 @@ extension CombineVC {
             self.present(matchVC, animated: true, completion: nil)
         }
     }
+    
+    func vizualizarUsuario(usuario:Usuario){
+       let detalheVC = UIViewController()
+        detalheVC.view.backgroundColor = .red
+        detalheVC.modalPresentationStyle = .fullScreen
+        
+        self.present(detalheVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension CombineVC {
