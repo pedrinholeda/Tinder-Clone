@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E40B965C242255AD00A13A74 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B965B242255AD00A13A74 /* UIButton.swift */; };
 		E44A09B5243D0A2E00A43E29 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A09B4243D0A2E00A43E29 /* MatchVC.swift */; };
+		E45C46A4244E8C0700B6A284 /* DetalheVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C46A3244E8C0700B6A284 /* DetalheVC.swift */; };
 		E48914EE24211751005093C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48914ED24211751005093C8 /* AppDelegate.swift */; };
 		E48914F024211751005093C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48914EF24211751005093C8 /* SceneDelegate.swift */; };
 		E48914F224211751005093C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48914F124211751005093C8 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		E40B965B242255AD00A13A74 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E44A09B4243D0A2E00A43E29 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
+		E45C46A3244E8C0700B6A284 /* DetalheVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheVC.swift; sourceTree = "<group>"; };
 		E48914EA24211751005093C8 /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48914ED24211751005093C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E48914EF24211751005093C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				E4891502242117B4005093C8 /* CombineVC.swift */,
 				E44A09B4243D0A2E00A43E29 /* MatchVC.swift */,
+				E45C46A3244E8C0700B6A284 /* DetalheVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				E489150B24212DCD005093C8 /* UiLabel.swift in Sources */,
 				E48914F224211751005093C8 /* ViewController.swift in Sources */,
 				E489150624212109005093C8 /* CombineCardView.swift in Sources */,
+				E45C46A4244E8C0700B6A284 /* DetalheVC.swift in Sources */,
 				E489151324213B14005093C8 /* UIImageView.swift in Sources */,
 				E48914EE24211751005093C8 /* AppDelegate.swift in Sources */,
 				E40B965C242255AD00A13A74 /* UIButton.swift in Sources */,
