@@ -8,13 +8,37 @@
 
 import UIKit
 
+class HeaderLayout: UICollectionViewFlowLayout {
+    //percorrendo todos os elementos
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let layoutAttributes = super.layoutAttributesForElements(in: rect)
+        //fazendo ele percorrer
+        layoutAttributes?.forEach({(attribute) in
+            //pra pegar o header
+            if attribute.representedElementKind == UICollectionView.elementKindSectionHeader{
+                guard let collectionView = collectionView else {return}
+                
+                let contentOffSetY = collectionView.contentOffset.y
+                attribute.frame = CGRect(x: 0, y: contentOffSetY, width: collectionView.bounds.width, height: attribute.bounds.height - contentOffSetY)
+            }
+        })
+        
+        return layoutAttributes
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+    
+}
+
 class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     let headerId = "headerId"
     
     init(){
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        super.init(collectionViewLayout: HeaderLayout())
     }
     
     required init?(coder: NSCoder) {
