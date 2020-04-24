@@ -32,6 +32,9 @@ class CombineCardView: UIView{
     let deslikeImageView: UIImageView = .iconCard(named: "card-deslike")
     let likeImageView: UIImageView = .iconCard(named: "card-like")
     
+    //fazendo callback
+    var callback: ((Usuario)-> Void)?
+    
     override init (frame: CGRect){
         super.init(frame:frame)
         
@@ -85,9 +88,23 @@ class CombineCardView: UIView{
             bottom: bottomAnchor,
             padding: .init(top: 0, left: 16, bottom: 16, right: 16)
         )
+        //criando um toque na tela
+        let tap = UITapGestureRecognizer(target: self, action: #selector(vizualizarClique))
+       
+        //adicionando tap dentro da StackView
+        //permitindo interaçao na stack
+        stackView.isUserInteractionEnabled = true
+        //adicionando o tap
+        stackView.addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    @objc func vizualizarClique(){
+        if let usuario = self.usuario{
+            self.callback?(usuario)
+        }
     }
 }
