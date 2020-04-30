@@ -61,7 +61,7 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         //fazendo header preencher a parte de cima da tela
         collectionView.contentInsetAdjustmentBehavior = .never
         
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .white
         //registrando layout da coleção
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         //registrando header
