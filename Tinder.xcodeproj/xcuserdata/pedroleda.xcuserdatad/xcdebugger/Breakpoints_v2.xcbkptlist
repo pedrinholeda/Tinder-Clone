@@ -3,4 +3,54 @@
    uuid = "58C00910-8659-460D-AF46-3D68B685D8CB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D9FE68C-B454-467E-9B01-20864BB714AF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tinder/View/DetalheHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "DetalheHeaderView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "2D9FE68C-B454-467E-9B01-20864BB714AF - 25546ab413cd06dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tinder.DetalheHeaderView.usuario.modify : Swift.Optional&lt;Tinder.Usuario&gt;"
+                  moduleName = "Tinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroleda/Desktop/tinder/Tinder/View/DetalheHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  uuid = "2D9FE68C-B454-467E-9B01-20864BB714AF - 8a2520c3bd6d6d57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tinder.DetalheHeaderView.usuario.modify : Swift.Optional&lt;Tinder.Usuario&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Tinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pedroleda/Desktop/tinder/Tinder/View/DetalheHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
