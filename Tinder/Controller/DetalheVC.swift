@@ -43,6 +43,7 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     let cellId = "cellId"
     let headerId = "headerId"
     let perfilId = "perfilId"
+    let fotosId = "fotosId"
     
     init(){
         super.init(collectionViewLayout: HeaderLayout())
@@ -67,11 +68,13 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         collectionView.register(DetalheHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:headerId )
         //registrando celula de perfil
         collectionView.register(DetalhePerfilCell.self, forCellWithReuseIdentifier: perfilId)
+        //registrando parte de fotos do instagram
+        collectionView.register(DetalhesFotosCell.self, forCellWithReuseIdentifier: fotosId)
     }
     
     //numero de linhas que vai ter
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     //setando tamanho no header
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -93,27 +96,37 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
 //        cell.backgroundColor = .blue
 //        return cell
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: perfilId, for: indexPath) as! DetalhePerfilCell
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: perfilId, for: indexPath) as! DetalhePerfilCell
+                cell.usuario = self.usuario
+            
+                return cell
+        }
         
-        cell.usuario = self.usuario
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fotosId, for: indexPath) as! DetalhesFotosCell
         
         return cell
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width: CGFloat = UIScreen.main.bounds.width
-        var height: CGFloat = 100
+        var height: CGFloat = UIScreen.main.bounds.width * 0.66
         
-        let cell = DetalhePerfilCell(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
-        cell.usuario = self.usuario
+        if indexPath.item == 0 {
+            
+            let cell = DetalhePerfilCell(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            cell.usuario = self.usuario
+            cell.layoutIfNeeded()
+            let estimativaTamanho = cell.systemLayoutSizeFitting(CGSize(width: width, height: 1000))
+            height = estimativaTamanho.height
         
-        cell.layoutIfNeeded()
+        }
         
-        let estimativaTamanho = cell.systemLayoutSizeFitting(CGSize(width: width, height: 1000))
         
-        height = estimativaTamanho.height
+        
         
         return .init(width: width, height: height)
     }
