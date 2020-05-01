@@ -150,8 +150,17 @@ extension CombineVC {
         detalheVC.modalPresentationStyle = .fullScreen
         
         self.present(detalheVC, animated: true, completion: nil)
+        
+        detalheVC.callback = { (usuario, acao) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                if acao == .deslike{
+                    self.deslikeClique()
+                }else{
+                    self.likeClique()
+                }
+            })
+        }
     }
-    
 }
 
 extension CombineVC {
