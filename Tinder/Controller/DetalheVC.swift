@@ -45,6 +45,11 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     let perfilId = "perfilId"
     let fotosId = "fotosId"
     
+    var deslikeButton: UIButton = .iconFooter(named: "icone-deslike")
+    var likeButton: UIButton = .iconFooter(named: "icone-like")
+    
+     var callback : ((Usuario?, Acao) -> Void)?
+    
     init(){
         super.init(collectionViewLayout: HeaderLayout())
     }
@@ -60,6 +65,8 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         
         //fazendo header preencher a parte de cima da tela
         collectionView.contentInsetAdjustmentBehavior = .never
+        //espaço do footer
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 134, right: 0)
         
         collectionView.backgroundColor = .white
         //registrando layout da coleção
@@ -70,6 +77,28 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         collectionView.register(DetalhePerfilCell.self, forCellWithReuseIdentifier: perfilId)
         //registrando parte de fotos do instagram
         collectionView.register(DetalhesFotosCell.self, forCellWithReuseIdentifier: fotosId)
+        
+        self.adicionarFooter()
+    }
+    
+    func adicionarFooter(){
+        let stackView = UIStackView(arrangedSubviews: [UIView(), deslikeButton, likeButton, UIView()])
+        //centralizando
+        stackView.distribution = .equalCentering
+        
+        view.addSubview(stackView)
+        stackView.preencher(
+            top: nil,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor,
+            padding: .init(top: 0, left: 16, bottom: 34, right: 16))
+        
+        deslikeButton.addTarget(self, action: #selector(deslikeClique), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(likeClique), for: .touchUpInside)
+        
+       
+        
     }
     
     //numero de linhas que vai ter
@@ -125,10 +154,22 @@ class DetalheVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         
         }
         
-        
-        
-        
         return .init(width: width, height: height)
     }
+    @objc func voltarClique(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
+    @objc func deslikeClique(){
+        print("deslike")
+        
+        self.callback?(self.usuario, Acao.deslike)
+        voltarClique()
+    }
+    
+    @objc func likeClique(){
+          print("like")
+        self.callback?(self.usuario, Acao.like)
+        voltarClique()
+      }
 }
