@@ -1,8 +1,7 @@
 //
 //  DetalheVC.swift
 //  Tinder
-//
-//  Created by Pedro Henrique  on 20/04/20.
+//  Created by Pedro Henrique
 //  Copyright © 2020 Pedro Henrique . All rights reserved.
 //
 
