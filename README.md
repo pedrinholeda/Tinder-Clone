@@ -23,3 +23,7 @@
 ## Tela de Loading e Detalhes
 
 ![](./Capturas/Captura04.png)
+
+## Licença
+
+[MIT](LICENSE)
